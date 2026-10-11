@@ -11,7 +11,6 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, onClose, children }: ModalProps) {
-  // Флаг, указывающий, что компонент смонтирован в браузере
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

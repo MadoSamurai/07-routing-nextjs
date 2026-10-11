@@ -11,7 +11,11 @@ import { useState } from "react";
 import { useDebounce } from "use-debounce";
 import css from "./Notes.module.css";
 
-export default function NotesClient() {
+interface NotesClientProps {
+  tag: string;
+}
+
+export default function NotesClient({ tag }: NotesClientProps) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [debouncedSearch] = useDebounce(search, 500);
@@ -23,9 +27,9 @@ export default function NotesClient() {
   };
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["notes", page, debouncedSearch],
+    queryKey: ["notes", page, debouncedSearch, tag],
     queryFn: () =>
-      fetchNotes({ page, perPage: PER_PAGE, search: debouncedSearch }),
+      fetchNotes({ page, perPage: PER_PAGE, search: debouncedSearch, tag }),
     placeholderData: keepPreviousData,
   });
 

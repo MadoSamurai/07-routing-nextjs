@@ -12,6 +12,7 @@ export interface FetchNotesParams {
   page?: number;
   perPage?: number;
   search?: string;
+  tag?: string;
 }
 export interface FetchNoteResponse {
   notes: Note[];
@@ -26,7 +27,13 @@ export interface CreateNotePayLoad {
 export const fetchNotes = async (
   params?: FetchNotesParams,
 ): Promise<FetchNoteResponse> => {
-  const { data } = await axiosApi.get<FetchNoteResponse>("/notes", { params });
+  const queryParams = { ...params };
+  if (queryParams.tag === "all" || !queryParams.tag) {
+    delete queryParams.tag;
+  }
+  const { data } = await axiosApi.get<FetchNoteResponse>("/notes", {
+    params: queryParams,
+  });
   return data;
 };
 
