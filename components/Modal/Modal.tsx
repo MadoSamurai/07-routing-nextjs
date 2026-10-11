@@ -51,6 +51,6 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
     >
       <div className={css.modal}>{children}</div>
     </div>,
-    document.body, // Теперь document.body вызывается только на клиенте!
+    document.body,
   );
 }
