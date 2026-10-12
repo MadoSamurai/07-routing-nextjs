@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import css from "./page.module.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
@@ -32,9 +31,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
       <body>
         <TanStackProvider>
           <Header />
-          <main>
-            <div className={css.container}>{children}</div>
-          </main>
+          {children}
           {modal}
           <Footer />
         </TanStackProvider>

@@ -65,4 +65,7 @@
   text-decoration: underline;
   display: inline-block;
   background-color: transparent;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
